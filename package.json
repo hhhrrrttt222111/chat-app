@@ -1,0 +1,15 @@
+{
+  "name": "chat-app",
+  "version": "1.0.0",
+  "description": "A chat app made wit NodeJS, ExpressJS, Socket.io & jQuery",
+  "main": "index.js",
+  "scripts": {
+    "test": ""
+  },
+  "author": "HRT",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0"
+  }
+}

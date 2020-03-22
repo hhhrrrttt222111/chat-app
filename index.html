@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles\index.css">
+    <script type="text/javascript" src="socket.io/socket.io.js"></script>
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script>
+
+    <title>Chat_App</title>
+
+  </head>
+  <body>
+
+    <h1 id="h1">HRT's <br> Online Chat System</h1> 
+    
+        <div id="login-area">
+            <div id="login-text">
+                <h1>Login Page</h1>
+            </div>
+            <div id="login-form-area">
+                <form id="login-form">
+                    <input id="username" type="text" placeholder="Username" autocomplete="off">
+                    <input id="login-submit" type="submit" value="Login">
+                </form>
+            </div>
+        </div>
+
+        <div id="chat-area">
+            <div id="users-area">
+                <div id="online-users-text">
+                    <h1>ONLINE USERS</h1>
+                </div>
+                <div id="online-users">
+                    <ul id="users"></ul>
+                </div>
+            </div>
+
+            <div id="message-area">
+                <div id="display-message-area">
+                    <ul id="messages"></ul>
+                </div>
+                <div id="message-form-area">
+                    <form id="message-form">
+                        <input id="message" type="text" placeholder="Type message" autocomplete="off">
+                        <input id="message-submit" type="submit" value="SEND">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+    
+ 
+
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" 
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+        <script type="text/javascript">
+            
+            var socket = io();
+
+            function updateUsers(list) {
+                for(var i = 0; i < list.length; i++) {
+                    $("#users").append("<li><b>" + list[i] + "</b></li>");
+                }               
+            }
+           
+
+            $("#login-form").submit(function(event){
+                event.preventDefault();
+                if($("#username").val() == "" || $("#username").val() == " ") {
+                    alert("Invalid Username!!");
+                } else {
+                    $username = $("#username").val();
+
+                    $("#login-area").hide();
+                    $("#h1").hide();
+                    $("#chat-area").show();
+                    $("#messages").html("");
+
+                    socket.emit("Has connected" , $username);
+
+                }
+            });
+
+            $("#message-form").submit(function(event) {
+                event.preventDefault();
+
+                if($("#message").val() == "" || $("#message").val() == " ") {
+                    alert("Type Message");
+                } else {
+                    socket.emit("new message" , {username: $username , message: $("#message").val()});
+                    $("#message").val("");
+
+                }
+
+            });
+
+            socket.on("Has connected" , function(data) {
+                $("#users").html("");
+               
+
+                updateUsers(data.usersList);
+                $("#messages").append("<li><i><b>" + data.username + "</b> has connected </i></li>")
+            });
+
+            socket.on("Has disconnected" , function(data){
+                $("#users").html("");
+                updateUsers(data.usersList);
+                $("#messages").append("<li><i><b>" + data.username + "</b> has disconnected </i></li>")
+            });
+
+            socket.on("new message" , function(data) {
+                $("#messages").append("<li><b>"+ data.username + "</b> : " + data.message + "</li>")
+            })
+
+
+
+
+
+
+
+           
+        </script>
+</html>

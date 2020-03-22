@@ -1,0 +1,195 @@
+
+
+html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid transparent;
+    overflow: hidden;
+    background: rgb(15,255,0);
+    background: radial-gradient(circle, rgba(15,255,0,1) 0%, rgba(0,0,0,1) 88%);
+
+}
+
+#h1 {
+    padding-top: 80px;
+    padding-bottom: 0;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    
+}
+
+#login-area {
+    width: 500px;
+    height: 300px;
+    border: 1px solid black;
+    margin: 0 auto;
+    margin-top: 100px;
+    background-color: black;
+    border-radius: 10%;
+}
+
+#login-area #login-text {
+    width: 100%;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 10px;
+    color: yellowgreen;
+}
+
+#login-area #login-form-area {
+    width: 100%;
+    text-align: center;
+    margin-top: 40px;
+}
+
+#username {
+    border-radius: 2%;
+    height: 40px;
+    width: 300px;
+    padding: 0px 5px;
+    font-size: 20px;
+    background: rgb(0,0,0);
+    background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(15,255,0,1) 100%);
+}
+
+#username::placeholder {
+    color: black;
+}
+
+#login-submit {
+    font-size: 26px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: transparent;
+    border: 1px solid #000;
+    height: 46px;
+    width: 100px;
+    cursor: pointer;
+    background-color: green;
+}
+
+#login-submit:hover {
+    background-color: #292929;
+    color: white;
+}
+
+
+#chat-area {
+    display: none;
+    height: 100%;
+    width: 100%; 
+    background-color: red;
+}
+
+#chat-area #users-area {
+    height: 100%;
+    background-color: black;
+    border-top: 1px solid transparent;
+    width: 20%;
+
+    float: left;
+}
+
+#chat-area #users-area #online-users-text {
+    margin: 0;
+    padding: 0;
+    margin-top: 150px;
+    text-align: center;
+    color: black;
+}
+
+#chat-area #users-area #online-users-text h1 {
+    margin: 0;
+    padding: 0;
+    color: #33ff33;
+}
+
+#online-users #users {
+    margin: 0;
+    padding: 0;
+    margin-top: 30px;
+    text-align: center;
+    color: #00e600;
+}
+
+#online-users #users li {
+    list-style-type: none;
+
+    margin-top: 10px;
+    font-size: 30px;
+}
+
+#message-area {
+    width: 80%;
+    height: 100%;
+    background-color: tomato;
+    float: right;
+}
+
+#display-message-area {
+    width: 100%;
+    height: 85%;
+    background-color: #80ff80;
+    border-top: 1px solid transparent;
+}
+
+/* #messages li {
+    list-style-type: none;
+    padding: 10px 10px;
+    background-color: gray;
+} */
+
+#messages {
+    margin: 0;
+    padding: 0;
+  
+}
+
+#messages li {
+    list-style-type: none;
+    padding: 10px 10px;
+   
+}
+
+#messages li:nth-child(odd) {
+    background-color: #ccffcc;
+}
+
+#message-form-area {
+    width: 100%;
+    height: 15%;
+    background-color: #4d0000;
+
+}
+
+#message-form #message{
+    height: 60px;
+    width: 90%;
+    font-size: 26px;
+    padding: 0px 5px;
+    outline: none;
+    outline-offset: 0;
+
+}
+
+#message-form #message-submit {
+    height: 55px;
+    width: 90px;
+    background-color: coral;
+    font-size: 26px;
+}
+
+#message-form #message-submit:hover {
+    background-color: #000;
+    color: coral;
+}
